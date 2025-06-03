@@ -30,7 +30,10 @@ def teclado_marcacao():
     return ReplyKeyboardMarkup(
         [["Segunda-feira"],
          ["Terça-feira"],
-         ["Quarta-feira"]],
+         ["Quarta-feira"],
+         ["Quinta-feira"],
+         ["Sexta-feira"],
+         ["Sábado"]]
         resize_keyboard=True
     )
 
