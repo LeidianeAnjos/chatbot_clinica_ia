@@ -1,20 +1,11 @@
-from telegram import ReplyKeyboardMarkup
+# chatbot_motor.py
 
-perguntas_respostas = {
-    "Olá": "Olá! Como posso ajudar? Deseja marcar uma consulta?",
-    "Quero marcar consulta": "Claro! Por favor, informe o nome completo e o melhor dia para o atendimento.",
-    "Horário de atendimento": "Atendemos de segunda a sexta, das 8h às 18h.",
-    "Endereço": "Estamos localizados na Rua da Saúde, nº 123.",
-    "Obrigado": "De nada! Estou à disposição.",
-}
-
-teclado_opcoes = ReplyKeyboardMarkup(
-    [["Olá", "Quero marcar consulta"],
-     ["Horário de atendimento", "Endereço"],
-     ["Obrigado"]],
-    resize_keyboard=True
-)
+from chatbot_base import perguntas_respostas, teclado_opcoes
 
 def responder(texto_usuario):
-    resposta = perguntas_respostas.get(texto_usuario, "Desculpe, não entendi. Por favor, selecione uma opção.")
+    # Procura resposta no dicionário ou responde com mensagem padrão
+    resposta = perguntas_respostas.get(
+        texto_usuario,
+        "Desculpe, não entendi. Por favor, selecione uma das opções no teclado."
+    )
     return resposta, teclado_opcoes

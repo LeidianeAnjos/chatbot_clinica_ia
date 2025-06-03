@@ -1,3 +1,5 @@
+# chatbot_base.py
+
 from telegram import ReplyKeyboardMarkup
 
 # Dicionário com perguntas e respostas
@@ -9,17 +11,10 @@ perguntas_respostas = {
     "Obrigado": "De nada! Estou à disposição.",
 }
 
-# Teclado com botões, para facilitar a interação e evitar erros de digitação
+# Teclado com botões para evitar erros de digitação
 teclado_opcoes = ReplyKeyboardMarkup(
-    [["Olá", "Quero marcar consulta"], ["Horário de atendimento", "Endereço"], ["Obrigado"]],
+    [["Olá", "Quero marcar consulta"],
+     ["Horário de atendimento", "Endereço"],
+     ["Obrigado"]],
     resize_keyboard=True
 )
-
-def responder(texto_usuario):
-    # Busca a resposta no dicionário, se não encontrar, responde padrão
-    resposta = perguntas_respostas.get(
-        texto_usuario,
-        "Desculpe, não entendi. Por favor, selecione uma opção."
-    )
-    # Retorna a resposta e o teclado para mostrar sempre as opções
-    return resposta, teclado_opcoes
