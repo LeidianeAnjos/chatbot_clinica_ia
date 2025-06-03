@@ -9,7 +9,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def responder_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
     texto_usuario = update.message.text
-    resposta, teclado = responder(texto_usuario)
+    resposta = responder(texto_usuario)
     await update.message.reply_text(resposta, reply_markup=teclado)
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
