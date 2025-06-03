@@ -26,6 +26,9 @@ def teclado_inicial():
     )
 
 # Teclado para marcar consulta (dias da semana)
+
+
+# Teclado para marcar consulta (dias da semana)
 def teclado_marcacao():
     return ReplyKeyboardMarkup(
         [["Segunda-feira"],
@@ -33,8 +36,8 @@ def teclado_marcacao():
          ["Quarta-feira"],
          ["Quinta-feira"],
          ["Sexta-feira"],
-         ["Sábado"]]
-        resize_keyboard=True
+         ["Sábado"]],
+        resize_keyboard=True  # <-- vírgula corrigida antes deste argumento
     )
 
 def responder(texto_usuario):
