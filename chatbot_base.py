@@ -16,7 +16,7 @@ perguntas_respostas = {
     "Sexta-feira": "Agendamento para sexta-feira confirmado!",
     "1- Clínica Geral": " Agendado ",
     "2- Ginecologia e Obstetrícia": "Ginecologia e Obstetrícia",
-    "3- Cardiologia": " Agendado Cardiologia",
+    "3- Cardiologia": " Agenda Cardiologia",
     "4- Dermatologia": " Agendado Dermatologia ",
     "5- Ortopedia": " Agendado Ortopedia",
     "6- Endocrinologia": " Agendado Endocrinologia",
@@ -85,10 +85,12 @@ def responder(texto_usuario):
         resposta = perguntas_respostas.get(texto_usuario)
         return resposta, teclado_especialidade()
 
+
     # Se o usuário selecionou um dia para consulta, confirmar e voltar para o teclado inicial
-    if texto_usuario in ["Segunda-feira", "Terça-feira", "Quarta-feira"]:
-        resposta = perguntas_respostas.get(texto_usuario, "Dia inválido.")
-        return resposta, teclado_inicial()
+    if texto_usuario in ["1- Clínica Geral","2- Ginecologia e Obstetrícia"],"3- Cardiologia","4- Dermatologia",
+         "5- Ortopedia","6- Endocrinologia","7- Psicologia","8- Nutrição"]:
+        resposta = perguntas_respostas.get(texto_usuario, "Inválido.")
+        return resposta, teclado_convenio()
 
     # Para outras mensagens, responder com o teclado inicial
     resposta = perguntas_respostas.get(
