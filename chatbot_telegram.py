@@ -1,16 +1,21 @@
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-from chatbot_motor import responder
+from chatbot_motor import responder  # Certifique-se de que o nome do arquivo é chatbot_motor.py
 
 TOKEN = "7062908060:AAE356yc0yV70ZuwKSDvusiLViGb0eJPYtc"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Olá! Eu sou a assistente da Clínica. Como posso ajudar?")
+    from chatbot_motor import teclado_opcoes
+    await update.message.reply_text(
+        "Olá! Eu sou a assistente da Clínica. Como posso ajudar?",
+        reply_markup=teclado_opcoes
+    )
 
 async def responder_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
     texto_usuario = update.message.text
-    resposta = responder(texto_usuario)
+    resposta, teclado = responder(texto_usuario)
     await update.message.reply_text(resposta, reply_markup=teclado)
+
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
@@ -20,4 +25,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
