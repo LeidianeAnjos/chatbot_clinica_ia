@@ -87,7 +87,7 @@ def responder(texto_usuario):
 
 
     # Se o usuário selecionou um dia para consulta, confirmar e voltar para o teclado inicial
-    if texto_usuario in ["1- Clínica Geral","2- Ginecologia e Obstetrícia"],"3- Cardiologia","4- Dermatologia",
+    if texto_usuario in ["1- Clínica Geral","2- Ginecologia e Obstetrícia","3- Cardiologia","4- Dermatologia",
          "5- Ortopedia","6- Endocrinologia","7- Psicologia","8- Nutrição"]:
         resposta = perguntas_respostas.get(texto_usuario, "Inválido.")
         return resposta, teclado_convenio()
