@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from chatbot_base import responder
 
-TOKEN = "SEU_TOKEN_AQUI"
+TOKEN = "7062908060:AAE356yc0yV70ZuwKSDvusiLViGb0eJPYtc"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     resposta, teclado = responder("Olá")
