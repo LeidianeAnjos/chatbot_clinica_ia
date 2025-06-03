@@ -5,7 +5,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 from chatbot_motor import responder
 
 # 🔒 Substitua pelo seu TOKEN real
-TOKEN = "SEU_TOKEN_AQUI"
+TOKEN = "7062908060:AAE356yc0yV70ZuwKSDvusiLViGb0eJPYtc"
 
 # Comando /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
