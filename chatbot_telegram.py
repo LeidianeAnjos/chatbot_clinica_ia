@@ -9,9 +9,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def responder_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
     texto_usuario = update.message.text
-    resposta = responder(texto_usuario)
-    await update.message.reply_text(resposta)
-
+    resposta, teclado = responder(texto_usuario)
+    await update.message.reply_text(resposta, reply_markup=teclado)
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))

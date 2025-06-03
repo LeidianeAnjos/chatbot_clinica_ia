@@ -5,4 +5,4 @@ def responder(pergunta_usuario):
     for pergunta in perguntas_respostas:
         if pergunta in pergunta_usuario:
             return perguntas_respostas[pergunta]
-    return "Desculpe, ainda não sei responder essa pergunta.ok"
+    return "Desculpe, ainda não sei responder essa pergunta."
