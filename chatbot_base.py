@@ -1,61 +1,53 @@
-# chatbot_base.py
-
 from telegram import ReplyKeyboardMarkup
 
 # Dicionário com perguntas e respostas
 perguntas_respostas = {
-    "Olá": "Olá! Como posso ajudar? Deseja marcar uma consulta?",
-    "Quero marcar consulta": "Claro! Por favor, informe o nome completo e escolha o melhor dia para o atendimento.",
-    "Horário de atendimento": "Atendemos de segunda a sexta, das 8h às 18h.",
-    "Endereço": "Estamos localizados na Rua da Saúde, nº 123.",
-    "Obrigado": "De nada! Estou à disposição.",
-    "Segunda-feira": "Agendamento para segunda-feira confirmado!",
-    "Terça-feira": "Agendamento para terça-feira confirmado!",
-    "Quarta-feira": "Agendamento para quarta-feira confirmado!",
+    "Olá": "Olá! Bem-vindo à Clínica Hipermoderna! Como posso ajudar? Deseja marcar uma consulta?",
+    "Quero marcar consulta": "Claro! Por favor, informe o nome completo e escolha um dia da semana para atendimento.",
+    "Horário de atendimento": "Funcionamos de segunda a sábado, das 7h às 20h.",
+    "Endereço": "Estamos localizados na Av. das Inovações, nº 456 – Centro Tecnológico, São Paulo.",
+    "Convênios aceitos": "Aceitamos os seguintes convênios: Unimed, Amil, Bradesco Saúde, SulAmérica e Particular.",
+    "Especialidades": "Oferecemos atendimento em: Clínica Geral, Cardiologia, Pediatria, Ginecologia, Dermatologia, Ortopedia e Psicologia.",
+    "Exames disponíveis": "Realizamos exames como: Hemograma, Eletrocardiograma, Ultrassonografia, Raio-X, Teste Ergométrico e mais.",
+    "Contato": "Você pode falar conosco pelo telefone (11) 4002-8922 ou pelo WhatsApp (11) 98888-0000.",
+    "Obrigado": "De nada! Qualquer coisa, estou por aqui. 😊",
+    "Tchau": "Até mais! A Clínica Hipermoderna agradece seu contato. 👋",
 }
 
-# Teclado inicial com botões um abaixo do outro
-def teclado_inicial():
-    return ReplyKeyboardMarkup(
-        [["Olá"],
-         ["Quero marcar consulta"],
-         ["Horário de atendimento"],
-         ["Endereço"],
-         ["Obrigado"]],
-        resize_keyboard=True
-    )
+# Teclado principal com opções iniciais
+teclado_principal = ReplyKeyboardMarkup(
+    [
+        ["Olá", "Quero marcar consulta"],
+        ["Horário de atendimento", "Endereço"],
+        ["Convênios aceitos", "Especialidades"],
+        ["Exames disponíveis", "Contato"],
+        ["Obrigado", "Tchau"]
+    ],
+    resize_keyboard=True
+)
 
-# Teclado para marcar consulta (dias da semana)
+# Teclado com dias da semana para marcação
+teclado_dias_semana = ReplyKeyboardMarkup(
+    [
+        ["Segunda-feira"],
+        ["Terça-feira"],
+        ["Quarta-feira"],
+        ["Quinta-feira"],
+        ["Sexta-feira"],
+        ["Sábado"]
+    ],
+    resize_keyboard=True
+)
 
-
-# Teclado para marcar consulta (dias da semana)
-def teclado_marcacao():
-    return ReplyKeyboardMarkup(
-        [["Segunda-feira"],
-         ["Terça-feira"],
-         ["Quarta-feira"],
-         ["Quinta-feira"],
-         ["Sexta-feira"],
-         ["Sábado"]],
-        resize_keyboard=True  # <-- vírgula corrigida antes deste argumento
-    )
-
+# Função de resposta com teclado dinâmico
 def responder(texto_usuario):
-    texto_usuario = texto_usuario.strip()  # remover espaços em branco
-
-    # Se o usuário quer marcar consulta, mostrar opções de dias
-    if texto_usuario == "Quero marcar consulta":
-        resposta = perguntas_respostas.get(texto_usuario)
-        return resposta, teclado_marcacao()
-
-    # Se o usuário selecionou um dia para consulta, confirmar e voltar para o teclado inicial
-    if texto_usuario in ["Segunda-feira", "Terça-feira", "Quarta-feira"]:
-        resposta = perguntas_respostas.get(texto_usuario, "Dia inválido.")
-        return resposta, teclado_inicial()
-
-    # Para outras mensagens, responder com o teclado inicial
     resposta = perguntas_respostas.get(
         texto_usuario,
-        "Desculpe, não entendi. Por favor, selecione uma opção."
+        "Desculpe, não entendi. Por favor, selecione uma das opções abaixo."
     )
-    return resposta, teclado_inicial()
+
+    # Muda o teclado dependendo da pergunta
+    if texto_usuario == "Quero marcar consulta":
+        return resposta, teclado_dias_semana
+    else:
+        return resposta, teclado_principal
