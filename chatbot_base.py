@@ -12,6 +12,8 @@ perguntas_respostas = {
     "Segunda-feira": "Agendamento para segunda-feira confirmado!",
     "Terça-feira": "Agendamento para terça-feira confirmado!",
     "Quarta-feira": "Agendamento para quarta-feira confirmado!",
+    "Quinta-feira": "Agendamento para quinta-feira confirmado!",
+    "Sexta-feira": "Agendamento para sexta-feira confirmado!",
 }
 
 # Teclado inicial com botões um abaixo do outro
