@@ -5,7 +5,7 @@ from chatbot_motor import responder
 TOKEN = "7062908060:AAE356yc0yV70ZuwKSDvusiLViGb0eJPYtc"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Olá! Eu sou o assistente da Clínica. Como posso ajudar?")
+    await update.message.reply_text("Olá! Eu sou a assistente da Clínica. Como posso ajudar?")
 
 async def responder_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
     texto_usuario = update.message.text
