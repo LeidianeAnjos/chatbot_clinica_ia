@@ -1,7 +1,7 @@
-#pip3 install pyTelegramBotAPI
-#pip3 install --upgrade pyTelegramBotAPI
-#pip3 install telebot
-#pip3 install python-decouple
+pip3 install pyTelegramBotAPI
+pip3 install --upgrade pyTelegramBotAPI
+pip3 install telebot
+pip3 install python-decouple
 import telebot
 from decouple import config
 import time
